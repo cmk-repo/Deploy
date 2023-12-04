@@ -18,11 +18,13 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           SSH_SERVER_ID: ${{secrets.SSH_SERVER_ID}}
           SSH_KNOWN_HOST: ${{secrets.SSH_KNOWN_HOST}}
+          SSH_IP: ${{secrets.SSH_IP}}
         run: |
           echo "$SSH_PRIVATE_KEY" > keyfile
           echo "$SSH_SERVER_ID"> id
+          echo "$SSH_IP"> ip
           chmod 600 keyfile
           mkdir -p ~/.ssh
           echo "$SSH_KNOWN_HOST" > kh
           cp kh ~/.ssh/known_hosts
-          ssh -T -i keyfile id "sudo bash ~/deploy.sh"
+          ssh -T -i keyfile id@ip "sudo bash ~/deploy.sh"
