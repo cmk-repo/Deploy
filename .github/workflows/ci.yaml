@@ -25,4 +25,4 @@ jobs:
           mkdir -p ~/.ssh
           echo "$SSH_KNOWN_HOST" > kh
           cp kh ~/.ssh/known_hosts
-          ssh -t -i keyfile id "sudo bash ~/deploy.sh"
+          ssh -T -i keyfile id "sudo bash ~/deploy.sh"
