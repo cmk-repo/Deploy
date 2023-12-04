@@ -23,5 +23,6 @@ jobs:
           echo "$SSH_SERVER_ID"> id
           chmod 600 keyfile
           mkdir -p ~/.ssh
-          echo "$SSH_KNOWN_HOST" > ~/.ssh/known_hosts
+          echo "$SSH_KNOWN_HOST" > kh
+          cp kh ~/.ssh/known_hosts
           ssh -t -i keyfile id "sudo bash ~/deploy.sh"
